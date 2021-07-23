@@ -10,13 +10,26 @@ class ApiService
 {
     protected $memberRepository;
 
+    const FormatMapping = [
+        'text/plain' => 'text',
+        'application/json' => 'json',
+        'application/xml' => 'xml'
+    ];
+
     public function __construct(MemberRepository $memberRepository)
     {
         $this->memberRepository = $memberRepository;
     }
 
-    public static function response($data = [], $format = "text", $status = 200, array $headers = [])
+    private static function getFormat()
     {
+        $accept = Request()->header('accept');
+        return self::FormatMapping[$accept] ?? null;
+    }
+
+    public static function response($data = [], $format = 'text', $status = 200, array $headers = [])
+    {
+        $format = self::getFormat() ?? $format;
         switch ($format) {
             case 'json':
                 return Response()->json($data, $status, $headers);
