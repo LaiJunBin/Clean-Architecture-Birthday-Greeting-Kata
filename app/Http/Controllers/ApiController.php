@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
-
 use App\Repositories\MemberRepository;
+use Illuminate\Http\Request;
+use App\Models\Member;
 
 class ApiController extends Controller
 {
@@ -13,6 +13,27 @@ class ApiController extends Controller
     public function __construct(MemberRepository $memberRepository)
     {
         $this->memberRepository = $memberRepository;
+    }
+
+    public function elderPictureMessage()
+    {
+        [$year, $month, $day] = explode('-', date('Y-m-d'));
+        $members = $this->memberRepository
+            ->whereBirthday($month, $day)
+            ->whereYear('date_of_birthday', '<=', $year - 49)
+            ->get();
+
+        if ($members->count() === 0) {
+            return Response('No results.');
+        }
+
+        $output = '';
+        foreach ($members as $member) {
+            $output .= "Subject: Happy birthday!\nHappy birthday, dear `{$member->first_name}`!\n";
+            $output .= "<img src='https://picsum.photos/200' alt='Greeting Elder Picture'>";
+        }
+
+        return Response($output);
     }
 
     public function tailorMadeMessage()
