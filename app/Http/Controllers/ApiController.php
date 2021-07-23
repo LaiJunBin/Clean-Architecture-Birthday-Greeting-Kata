@@ -15,6 +15,21 @@ class ApiController extends Controller
         $this->memberRepository = $memberRepository;
     }
 
+    public function simpleMessageWithFullName()
+    {
+        [$month, $day] = explode('-', date('m-d'));
+        $members = $this->memberRepository->whereBirthday($month, $day)->get();
+        if ($members->count() === 0) {
+            return Response('No results.');
+        }
+
+        $output = '';
+        foreach ($members as $member) {
+            $output .= "Subject: Happy birthday!\nHappy birthday, dear {$member->last_name}, {$member->first_name}!\n";
+        }
+        return Response($output);
+    }
+  
     public function elderPictureMessage()
     {
         [$year, $month, $day] = explode('-', date('Y-m-d'));
