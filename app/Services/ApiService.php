@@ -31,7 +31,7 @@ class ApiService
     {
         $members = $this->memberRepository->whereBirthday($month, $day)->get();
         if ($members->count() === 0) {
-            return self::response('No Results.', $format);
+            return self::response('No results.', $format);
         }
 
         $data = [];
