@@ -25,15 +25,19 @@ class MemberTest extends TestCase
      *
      * @return void
      */
-    public function test_getMembersByBirthdayAndGender()
+    public function test_getMembersByBirthdayAndGenderFind()
     {
         $this->seed();
-
         $male_members = $this->memberRepository->whereBirthday(8, 8)->where('gender', Member::Male)->get();
         $female_members = $this->memberRepository->whereBirthday(8, 8)->where('gender', Member::Female)->get();
         $this->assertCount(1, $male_members);
         $this->assertCount(1, $female_members);
 
+    }
+
+    public function test_getMembersByBirthdayAndGenderNotFound()
+    {
+        $this->seed();
         $male_members = $this->memberRepository->whereBirthday(8, 9)->where('gender', Member::Male)->get();
         $female_members = $this->memberRepository->whereBirthday(8, 9)->where('gender', Member::Female)->get();
         $this->assertCount(0, $male_members);
