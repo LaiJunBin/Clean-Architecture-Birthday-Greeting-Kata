@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('/versions')->name('versions.')->group(function () {
+    Route::get('/1', [ApiController::class, 'simpleMessage'])->name('1');
+    Route::get('/2', [ApiController::class, 'tailorMadeMessage'])->name('2');
     Route::get('/3', [ApiController::class, 'elderPictureMessage'])->name('3');
 });
