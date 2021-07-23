@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,3 +13,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::prefix('/versions')->name('versions.')->group(function () {
+    Route::get('/4-1', [ApiController::class, 'simpleMessageWithFullName'])->name('4-1');
+});
+
