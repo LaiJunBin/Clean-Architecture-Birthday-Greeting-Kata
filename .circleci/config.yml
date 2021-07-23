@@ -10,6 +10,8 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "composer.json" }}
             - v1-dependencies-
+      - run: sudo pecl install mongodb
+      - run: echo -e "extension=mongodb.so" | sudo tee /etc/php/7.4/cli/php.ini > /dev/null
       - run: composer install -n --prefer-dist
       - run: cp .env.example .env
       - run: php artisan key:generate
