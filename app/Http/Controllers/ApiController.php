@@ -23,7 +23,7 @@ class ApiController extends Controller
             ->get();
 
         if ($members->count() === 0) {
-            return Response('No Results.');
+            return Response('No results.');
         }
 
         $output = '';
