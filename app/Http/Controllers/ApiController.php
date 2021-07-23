@@ -32,7 +32,7 @@ class ApiController extends Controller
             $output .= "{$gender}\n";
 
             if ($members->count() === 0) {
-                $output .= "No Results.\n";
+                $output .= "No results.\n";
                 continue;
             }
 
