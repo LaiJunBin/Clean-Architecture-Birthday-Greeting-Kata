@@ -19,7 +19,7 @@ class ApiController extends Controller
         [$month, $day] = explode('-', date('m-d'));
         $members = $this->memberRepository->whereBirthday($month, $day)->get();
         if ($members->count() === 0) {
-            return Response('No Results.');
+            return Response('No results.');
         }
 
         $output = '';
