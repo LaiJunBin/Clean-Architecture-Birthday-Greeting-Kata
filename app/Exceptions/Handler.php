@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Services\ApiService;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -37,5 +38,17 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        try {
+            $format = $request->get('format', 'json');
+            return ApiService::response([
+                'message' => $exception->getMessage()
+            ], $format, $exception->getStatusCode());
+        } catch (Throwable $e) {
+            return parent::render($request, $exception);
+        }
     }
 }
