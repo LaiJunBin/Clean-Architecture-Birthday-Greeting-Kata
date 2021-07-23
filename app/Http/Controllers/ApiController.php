@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiService;
 use App\Repositories\MemberRepository;
 use Illuminate\Http\Request;
 use App\Models\Member;
 
 class ApiController extends Controller
 {
+    protected $apiService;
     protected $memberRepository;
-
-    public function __construct(MemberRepository $memberRepository)
+  
+    public function __construct(ApiService $apiService, MemberRepository $memberRepository)
     {
+        $this->apiService = $apiService;
         $this->memberRepository = $memberRepository;
+    }
+
+    public function simpleMessageButDifferentFormat(Request $request)
+    {
+        $format = $request->get('format', 'text');
+        [$month, $day] = explode('-', date('m-d'));
+        return $this->apiService->simpleMessageForBirthDay($month, $day, $format);
     }
 
     public function simpleMessageWithFullName()
