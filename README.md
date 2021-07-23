@@ -43,7 +43,6 @@ GET | /api/versions/5   | Version 5 | text
 * headers: Accept: (text/plain|application/json|application/xml)
 
 <b>* `headers` 優先權大於 `GET params`</b>
-<b>* `member` 優先權大於 `GET params`</b>
 
 ---
 ## Example
