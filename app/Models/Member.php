@@ -9,6 +9,11 @@ class Member extends Model
 {
     use HasFactory;
 
+    const Male = 'Male';
+    const Female = 'Female';
+
+    const Genders = [self::Male, self::Female];
+
     protected $fillable = [
         'first_name', 'last_name', 'gender', 'date_of_birthday', 'email'
     ];
