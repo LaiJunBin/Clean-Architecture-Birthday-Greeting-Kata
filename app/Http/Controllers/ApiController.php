@@ -14,17 +14,17 @@ class ApiController extends Controller
         $this->memberRepository = $memberRepository;
     }
 
-    public function simpleMessageWithFullName()
+    public function simpleMessageButDatabaseChanges()
     {
         [$month, $day] = explode('-', date('m-d'));
-        $members = $this->memberRepository->whereBirthday($month, $day)->get();
+        $members = $this->memberRepository->whereBirthday($month, $day);
         if ($members->count() === 0) {
             return Response('No Results.');
         }
 
         $output = '';
         foreach ($members as $member) {
-            $output .= "Subject: Happy birthday!\nHappy birthday, dear {$member->last_name}, {$member->first_name}!\n";
+            $output .= "Subject: Happy birthday!\nHappy birthday, dear {$member->last_name}!\n";
         }
         return Response($output);
     }

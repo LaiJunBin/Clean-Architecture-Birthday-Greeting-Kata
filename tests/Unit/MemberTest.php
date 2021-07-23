@@ -3,12 +3,12 @@
 namespace Tests\Unit;
 
 use App\Repositories\MemberRepository;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class MemberTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseMigrations;
 
     protected $memberRepository;
 
@@ -26,9 +26,9 @@ class MemberTest extends TestCase
     public function test_getMembersByBirthDay()
     {
         $this->seed();
-        $members = $this->memberRepository->whereBirthday(8, 8)->get();
+        $members = $this->memberRepository->whereBirthday(8, 8);
         $this->assertCount(2, $members);
-        $members = $this->memberRepository->whereBirthday(8, 9)->get();
+        $members = $this->memberRepository->whereBirthday(8, 9);
         $this->assertCount(0, $members);
     }
 }
