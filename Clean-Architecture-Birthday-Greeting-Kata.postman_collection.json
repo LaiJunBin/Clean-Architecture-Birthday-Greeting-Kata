@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "a1153e15-91ec-49bd-9b44-61e78eb1caa3",
+		"name": "Clean-Architecture-Birthday-Greeting-Kata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all members. (text)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/members",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all members. (json)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/members",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all members. (xml)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/members",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a member.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"User\",\r\n    \"last_name\": \"Test\",\r\n    \"gender\": \"Male\",\r\n    \"date_of_birthday\": \"1944/7/25\",\r\n    \"email\": \"testuser@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/members",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a member.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"User\",\r\n    \"last_name\": \"Test\",\r\n    \"gender\": \"Male\",\r\n    \"date_of_birthday\": \"1944/7/24\",\r\n    \"email\": \"testuser@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/members/6",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"members",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/versions/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"versions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/versions/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"versions",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version 3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/versions/3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"versions",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version 4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/versions/4-1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"versions",
+						"4-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version 5 (text)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/versions/5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"versions",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version 5 (json)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/versions/5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"versions",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version 5 (xml)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/versions/5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"versions",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://birthday-greeting-kata.herokuapp.com"
+		}
+	]
+}

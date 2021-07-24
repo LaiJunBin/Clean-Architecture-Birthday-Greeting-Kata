@@ -23,6 +23,8 @@ iota+4|Peter|Wang|Male|1950/12/22|peter.wang@linecorp.com
 
 ServerUrl: https://birthday-greeting-kata.herokuapp.com
 
+Postman collection: [Clean-Architecture-Birthday-Greeting-Kata.postman_collection.json](Clean-Architecture-Birthday-Greeting-Kata.postman_collection.json)
+
 Method | URI  | Action | Default Response Type
 ------|-----|-----|-----
 GET | /api/members      | Get all members. | json
